@@ -1,0 +1,85 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.nav__icon {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.nav__icon__image { 
+    display: flex;
+    background-color: rgb(89, 66, 200);
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.nav__list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgb(112, 112, 112);
+    padding: 0px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.nav__item:hover {
+    background-color: rgb(239, 236, 253);
+    color: rgb(89, 66, 200);
+}
+
+.active {
+    color: rgb(89, 66, 200);
+    background-color: rgb(239, 236, 253);
+}
+
+.nav__button {
+    font-weight: bold;
+    color: rgb(89, 66, 200);
+    background-color: transparent;
+    border: 1px solid rgb(89, 66, 200);
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.nav__icon__view {
+    display: none;
+}
+
+@media (width <= 600px) {
+    .nav__icon__text, 
+    .nav__button {
+        display: none;
+    }
+    
+    .nav__icon__view {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: rgb(89, 66, 200);
+        padding: 10px;
+        border: 1px solid rgb(89, 66, 200);
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .nav svg {
+        width: 22px;
+    }
+}
