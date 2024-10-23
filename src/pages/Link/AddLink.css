@@ -1,0 +1,49 @@
+.link__container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.link__article {
+    display: flex;
+    flex-direction: column;
+    width: 980px;
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+    color: rgb(112, 112, 112);
+    border-radius: 8px;
+}
+
+.link__article__title h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.link__article__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.link__button__add {
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
+    color: rgb(89, 66, 200);
+    border: 1px solid rgb(89, 66, 200);
+    border-radius: 6px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.link__article__button {
+    width: 75px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: rgb(89, 66, 200);
+    color: white;
+    align-self: end;
+    cursor: pointer;
+}

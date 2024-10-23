@@ -6,17 +6,22 @@ import ProfileIcon from "../icons/ProfileIcon";
 import "./Navbar.css"
 import ViewIcon from "../icons/ViewIcon";
 
-function Navbar() {
-    const [itemActive, setItemActive] = useState(0);
+type Props = {
+    onIsActive: (id: number) => void 
+}
+
+function Navbar({onIsActive}: Props) {
+    const [itemActive, setItemActive] = useState(1);
 
     const onSelectPage = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         setItemActive(Number(e.currentTarget.id))
+        onIsActive(Number(e.currentTarget.id))
     }
     
     return <section className="nav">
         <div className="nav__icon">
             <div className="nav__icon__image">
-                <DevlinksLogo width={14} fill="#fff" />
+                <DevlinksLogo width={16} fill="#fff" />
             </div>
             <h1 className="nav__icon__text">
                 devlinks
