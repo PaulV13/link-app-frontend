@@ -1,0 +1,109 @@
+.profile__section {
+    background-color: rgb(248, 248, 248);
+    padding: 2rem;
+    border-radius: .6rem;
+    color: rgb(95, 95, 95);
+    width: 60%;
+    margin: 0 auto;
+}
+
+.profile__inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: rgb(223, 223, 223);
+    border-radius: .6rem;
+    gap: .6rem;
+}
+
+.profile__title h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.profile__title p {
+    margin-bottom: 1rem;
+}
+
+.profile__picture {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    background-color: rgb(223, 223, 223);
+    padding: 1rem;
+    border-radius: .6rem;
+}
+
+.profile__picture__info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 0.8rem;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile__picture__preview {
+    width: 150px;
+    height: 150px;
+    background-color: #aaaaaa;
+    border-radius: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.profile__picture__preview span {
+    position: absolute;
+    color: white;
+}
+
+.profile__form__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile__form__row input {
+    padding: .6rem;
+    border-radius: .4rem;
+    border: 1px solid #aaaaaa;
+}
+
+.profile__form__row input:focus {
+    outline: none;
+    border: 1px solid rgb(89, 66, 200);
+    box-shadow: rgba(89, 66, 200, 0.1) 1px 4px 16px,
+     rgba(89, 66, 200, 0.1) 0px 8px 32px;
+}
+
+.profile__form__input {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.profile__button {
+    width: 75px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: rgb(89, 66, 200);
+    color: white;
+    align-self: end;
+    cursor: pointer;
+}
+
+.error__message {
+    color: rgb(177, 20, 20);
+    font-size: 0.75rem;
+}

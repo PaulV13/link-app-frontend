@@ -3,9 +3,10 @@ import Navbar from "./components/navbar/Navbar"
 import AddLink from "./pages/Link/AddLink"
 
 import "./App.css"
+import Profile from "./pages/profile/Profile"
 
 function App() {
-  const [isActive, setIsActive] = useState(1)
+  const [isActive, setIsActive] = useState(2)
 
   const handleIsActive = (id: number) => {
     setIsActive(id)
@@ -15,7 +16,7 @@ function App() {
     <div className="container">
         <Navbar onIsActive={handleIsActive}/>
         {
-          isActive == 1 ? <AddLink /> : null
+          isActive == 1 ? <AddLink /> : <Profile />
         }
     </div>
   )
