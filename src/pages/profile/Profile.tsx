@@ -5,8 +5,9 @@ import { IProfile } from "../../interfaces/Profile";
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import useCloudinary from "../../hooks/useCloudinary";
+import usePersonStore from "../../store/store";
 
-import "./Profile.css"
+import "./Profile.css";
 
 const schema = z.object({
     firstName: z.string().min(2, { message: 'Please enter your first name.' }),
@@ -22,14 +23,10 @@ type FormData = {
 const typeImagesAccept = ["image/png", "image/jpeg", "image/avif"]; 
 
 function Profile() {
-    const [imageSelected, setImageSelected] = useState<File>()
-    const [previewImage, setPreviewImage] = useState<string>("");
-    const [profile, setProfile] = useState<IProfile>({
-        firstName: "",
-        lastName: "",
-        email: "",
-        photoUrl: ""
-    })
+    const profile = usePersonStore(state => state.profile);
+    const saveData = usePersonStore(state => state.updateData);
+    const [previewImage, setPreviewImage] = useState<string>(profile.photoUrl);
+    const [imageSelected, setImageSelected] = useState<File>();
     const profileImageRef = useRef<HTMLInputElement>(null);
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         values: profile,
@@ -38,43 +35,47 @@ function Profile() {
     const {uploadImage} = useCloudinary();
     
     useEffect(() => {
-        const profileDataString = localStorage.getItem("profile");
+        const profileDataString = localStorage.getItem("profile"); 
         if(profileDataString){
             const profileData = JSON.parse(profileDataString!);
-            setProfile(profileData);
+            saveData(profileData);
         }
     }, [])
-    
-    const onSubmit = async (data: FormData) => {
-        const {error, photoUrl} = await uploadImage(imageSelected!);
-        if(error) {
-            toast.error(error, {
-                duration: 2000,
-                position: 'bottom-center',
-                style: {
-                    backgroundColor: "#111",
-                    color: "#fff"
-                },
-            });
-            return;
-        }else{
-            const profileData: IProfile = {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                photoUrl: photoUrl
-            };
-            localStorage.setItem("profile", JSON.stringify(profileData));
-            setProfile(profileData);
-            toast.success('Your changes have been successfully saved!', {
-                duration: 2000,
-                position: 'bottom-center',
-                style: {
-                    backgroundColor: "#111",
-                    color: "#fff"
-                },
-            });
+    console.log(profile);
+    const onSubmit = async (data: FormData) => { 
+        let imageUrl = profile.photoUrl
+        if (imageSelected){
+            const {error, photoUrl} = await uploadImage(imageSelected!);
+            if(error) {
+                toast.error(error, {
+                    duration: 2000,
+                    position: 'bottom-center',
+                    style: {
+                        backgroundColor: "#111",
+                        color: "#fff"
+                    },
+                });
+            }else{
+                imageUrl = photoUrl
+            }
         }
+        const profileData: IProfile = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            photoUrl: imageUrl
+        };
+        saveData(profileData);
+        setImageSelected(undefined);
+        localStorage.setItem("profile", JSON.stringify(profileData));
+        toast.success('Your changes have been successfully saved!', {
+            duration: 2000,
+            position: 'bottom-center',
+            style: {
+                backgroundColor: "#111",
+                color: "#fff"
+            },
+        });
     };
 
     const handleImageUpload = (event: MouseEvent<HTMLLabelElement>) => {
@@ -84,9 +85,9 @@ function Profile() {
 
     const handleSelectImage = (event: ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = event.target.files as FileList;
-        if(typeImagesAccept.includes(selectedFiles[0]?.type)){
-            setPreviewImage(URL.createObjectURL(selectedFiles[0]))
-            setImageSelected(selectedFiles[0])
+        if(typeImagesAccept.includes(selectedFiles[0].type)){
+            setPreviewImage(URL.createObjectURL(selectedFiles[0]));
+            setImageSelected(selectedFiles[0]);
         }else{
             toast.error('This file type not accepted!', {
                 duration: 2000,

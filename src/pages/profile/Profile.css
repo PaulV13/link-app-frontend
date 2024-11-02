@@ -103,6 +103,10 @@
     cursor: pointer;
 }
 
+.profile__button:hover {
+    background-color: #7660e4;
+}
+
 .error__message {
     color: rgb(177, 20, 20);
     font-size: 0.75rem;

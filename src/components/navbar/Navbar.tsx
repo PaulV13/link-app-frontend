@@ -1,21 +1,19 @@
-import { useState } from "react";
+import CustomButton from "../button/CustomButton";
 import DevlinksLogo from "../icons/DevlinksLogo";
 import LinkIcon from "../icons/LinkIcon";
 import ProfileIcon from "../icons/ProfileIcon";
+import ViewIcon from "../icons/ViewIcon";
 
 import "./Navbar.css"
-import ViewIcon from "../icons/ViewIcon";
 
 type Props = {
     onIsActive: (id: number) => void 
+    isActive: number
 }
 
-function Navbar({onIsActive}: Props) {
-    const [itemActive, setItemActive] = useState(1);
-
+function Navbar({onIsActive, isActive}: Props) {
     const onSelectPage = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-        setItemActive(Number(e.currentTarget.id))
-        onIsActive(Number(e.currentTarget.id))
+        onIsActive(Number(e.currentTarget.id));
     }
     
     return <section className="nav">
@@ -28,11 +26,11 @@ function Navbar({onIsActive}: Props) {
             </h1>
         </div>
         <ul className="nav__list">
-            <li className={`nav__item ${itemActive == 1 ? "active" : null}`} id="1" onClick={onSelectPage}>
+            <li className={`nav__item ${isActive === 1 ? "active" : null}`} id="1" onClick={onSelectPage}>
                 <LinkIcon width={14} fill="currentColor" />
                 <p className="nav__icon__text">Links</p>
             </li>
-            <li className={`nav__item ${itemActive == 2 ? "active" : null}`} id="2"  onClick={onSelectPage}>
+            <li className={`nav__item ${isActive === 2 ? "active" : null}`} id="2"  onClick={onSelectPage}>
                 <ProfileIcon width={14} stroke="currentColor" />
                 <p className="nav__icon__text">Profile Details</p>
             </li>
@@ -41,7 +39,7 @@ function Navbar({onIsActive}: Props) {
             <div className="nav__icon__view">
                 <ViewIcon width={14} fill="currentColor" />
             </div>
-            <button className="nav__button">Preview</button>
+            <button className="nav__button" onClick={onSelectPage} id="3">Preview</button>
         </div>
     </section>
 }

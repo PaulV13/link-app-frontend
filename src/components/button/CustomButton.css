@@ -1,0 +1,29 @@
+.button {
+    width: 140px;
+    height: 44px;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.button__outline {
+    color: #5942c8;
+    border: 1px solid #5942c8;
+    background-color: transparent;
+}
+
+.button__blue {
+    color: white;
+    border: none;
+    background-color: #5942c8;
+}
+
+.button__outline:hover {
+    background-color: #7660e4;
+    color: white;
+}
+
+.button__blue:hover {
+    background-color: #7660e4;
+}
