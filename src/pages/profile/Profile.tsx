@@ -8,6 +8,7 @@ import useCloudinary from "../../hooks/useCloudinary";
 import usePersonStore from "../../store/store";
 
 import "./Profile.css";
+import Navbar from "../../components/navbar/Navbar";
 
 const schema = z.object({
     firstName: z.string().min(2, { message: 'Please enter your first name.' }),
@@ -101,7 +102,9 @@ function Profile() {
     }
     
     return (
-        <section className="profile__section">
+        <>
+            <Navbar/>
+            <section className="profile__section">
             <div className="profile__title">
                 <h2>Profile Details</h2>
                 <p>Add your details to create a personal touch to your profile.</p>
@@ -158,6 +161,7 @@ function Profile() {
             </form>  
             <Toaster />
         </section>
+        </>
   )
 }
 

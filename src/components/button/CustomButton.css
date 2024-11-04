@@ -11,6 +11,10 @@
     color: #5942c8;
     border: 1px solid #5942c8;
     background-color: transparent;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button__blue {

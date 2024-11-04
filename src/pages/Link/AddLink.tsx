@@ -5,6 +5,7 @@ import useAppStore from "../../store/store";
 import CustomButton from "../../components/button/CustomButton";
 
 import "./AddLink.css"
+import Navbar from "../../components/navbar/Navbar";
 
 function AddLink() {
     const links = useAppStore(state => state.links)
@@ -47,7 +48,9 @@ function AddLink() {
     }
 
     return (
-        <section className="link__container">
+        <>
+            <Navbar/>
+            <section className="link__container">
             <article className="link__article">
                 <div className="link__article__title">
                     <h2>Customize your links</h2>
@@ -65,6 +68,8 @@ function AddLink() {
             </article>
             <Toaster />
         </section>
+        </>
+       
     )
 }
 

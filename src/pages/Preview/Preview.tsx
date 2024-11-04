@@ -7,6 +7,7 @@ import CustomButton from "../../components/button/CustomButton";
 import useAppStore from "../../store/store";
 
 import "./Preview.css";
+import { NavLink } from "react-router-dom";
 
 const platformOptions = [
   { platform: "Github", color: "#1D1D1C", icon: <GithubIcon size={16} fill="white"/> },
@@ -41,21 +42,18 @@ function Preview() {
   }, [])
 
   const handleShareLink = () => {
-
-  }
-
-  const handleBackToEditor = () => {
-
+    console.log(profile)
+    console.log(links)
   }
 
   return (
     <div className="preview__container">
       <nav className="preview__navbar">
-      <CustomButton 
-          type="button"
+      <NavLink 
           className="button button__outline" 
-          title="Back to editor" 
-          onHandleClick={handleBackToEditor} />
+          to="/profile">
+            Back to editor
+          </NavLink>
         <CustomButton 
           type="button"
           className="button button__blue" 

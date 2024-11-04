@@ -11,6 +11,8 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    color: rgb(89, 66, 200);
+    text-decoration: none;
 }
 
 .nav__icon__image { 
@@ -31,9 +33,10 @@
     align-items: center;
     gap: 8px;
     color: rgb(112, 112, 112);
-    padding: 0px 20px;
+    padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .nav__item:hover {
@@ -54,6 +57,11 @@
     border-radius: 6px;
     padding: 10px 20px;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.nav__button:hover {
+    background-color: rgb(239, 236, 253);
 }
 
 .nav__icon__view {
